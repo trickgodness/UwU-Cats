@@ -8,4 +8,4 @@ Config.Cat4 = {-578.63, -1050.92, 22.75, nil, 90.0, nil, 0x573201B8}
 Config.Cat5 = {-584.1, -1062.91, 23.17, nil, 200.0, nil, 0x573201B8}
 
 Config.PetCatDuration = 5000  --Miliseconds
-
+Config.OxTarget = false   --- For petting cat
