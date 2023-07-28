@@ -1,6 +1,44 @@
 local petting = false
 local soundplaying = false
 
+RegisterNetEvent('tg:petcat')
+AddEventHandler('tg:petcat', function(source)
+	local player = PlayerPedId()
+	local animDict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@"
+	local animation = "machinic_loop_mechandplayer"
+	loadAnimDict(animDict)
+	local animLength = GetAnimDuration(animDict, animation)
+	TaskTurnPedToFaceEntity(player, ped3, 5000)
+	Wait(1500)
+	petting = true
+	FreezeEntityPosition(PlayerPedId(), true)
+	TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0, animLength, 49, 0, 0, 0, 0)
+	Wait(1500)
+	catsound()
+	Wait(Config.PetCatDuration)
+	ClearPedTasks(PlayerPedId())
+	FreezeEntityPosition(PlayerPedId(), false)
+	petting = false
+	soundplaying = false
+end)
+
+if Config.OxTarget then
+	exports.ox_target:addBoxZone({
+		coords = vec3(-584.05, -1063.0, 22.7),
+		size = vec3(2, 2, 2),
+		rotation = 45,
+		debug = drawZones,
+		options = {
+			{
+				name = 'box',
+				event = 'tg:petcat',
+				icon = 'fa-solid fa-cat',
+				label = 'Pet the cat',
+			}
+		}
+	})
+end
+
 function DrawText3D(x, y, z, text, scale)
     SetTextScale(0.35, 0.35)
 	SetTextFont(8)
@@ -59,7 +97,7 @@ Citizen.CreateThread(function()
         local player = PlayerPedId()
         local playerCoords = GetEntityCoords(player)
         local distance = GetDistanceBetweenCoords(-584.05, -1062.94, 22.8, playerCoords, true)
-        if distance <= 1.2 and petting == false then
+        if distance <= 1.2 and petting == false and Config.OxTarget == false then
 			sleep = 0
             DrawText3D(-584.05, -1063.0, 22.8,'[~g~E~w~] - Pet the cat')
             if IsControlJustPressed(1, 38) then
