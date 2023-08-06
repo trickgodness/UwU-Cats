@@ -8,7 +8,7 @@ AddEventHandler('tg:petcat', function(source)
 	local animation = "machinic_loop_mechandplayer"
 	loadAnimDict(animDict)
 	local animLength = GetAnimDuration(animDict, animation)
-	TaskTurnPedToFaceEntity(player, ped3, 5000)
+	-- TaskTurnPedToFaceEntity(player, ped3, 5000)
 	Wait(1500)
 	petting = true
 	FreezeEntityPosition(PlayerPedId(), true)
@@ -24,9 +24,65 @@ end)
 
 if Config.OxTarget then
 	exports.ox_target:addBoxZone({
-		coords = vec3(-584.05, -1063.0, 22.7),
-		size = vec3(2, 2, 2),
-		rotation = 45,
+		coords = vec3(-575.17, -1058.14, 23.15),
+		size = vec3(0.5, 0.5, 0.5),
+		rotation = 150.0,
+		debug = drawZones,
+		options = {
+			{
+				name = 'box',
+				event = 'tg:petcat',
+				icon = 'fa-solid fa-cat',
+				label = 'Pet the cat',
+			}
+		}
+	})
+	exports.ox_target:addBoxZone({
+		coords = vec3(-573.99, -1054.84, 22.40),
+		size = vec3(0.5, 0.5, 0.5),
+		rotation = 111.99,
+		debug = drawZones,
+		options = {
+			{
+				name = 'box',
+				event = 'tg:petcat',
+				icon = 'fa-solid fa-cat',
+				label = 'Pet the cat',
+			}
+		}
+	})
+	exports.ox_target:addBoxZone({
+		coords = vec3(-576.49, -1056.34, 22.40),
+		size = vec3(0.5, 0.5, 0.5),
+		rotation = 292.72,
+		debug = drawZones,
+		options = {
+			{
+				name = 'box',
+				event = 'tg:petcat',
+				icon = 'fa-solid fa-cat',
+				label = 'Pet the cat',
+			}
+		}
+	})
+	exports.ox_target:addBoxZone({
+		coords = vec3(-578.63, -1050.92, 22.75),
+		size = vec3(0.5, 0.5, 0.5),
+		rotation =  90.0,
+		debug = drawZones,
+		options = {
+			{
+				name = 'box',
+				event = 'tg:petcat',
+				icon = 'fa-solid fa-cat',
+				label = 'Pet the cat',
+			}
+		}
+	})
+	exports.ox_target:addBoxZone({
+		coords = vec3(-584.1, -1062.91, 23.17),
+		size = vec3(0.5, 0.5, 0.5),
+		rotation = 200.0,
 		debug = drawZones,
 		options = {
 			{
